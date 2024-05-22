@@ -40,8 +40,8 @@
 
     <Button
         android:id="@+id/btnLogin"
-        android:layout_width="122dp"
-        android:layout_height="53dp"
+        android:layout_width="133dp"
+        android:layout_height="57dp"
         android:backgroundTint="#E4FFFFFF"
         android:fontFamily="casual"
         android:text="Login"
@@ -49,10 +49,9 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPassword"
-        app:layout_constraintVertical_bias="0.164" />
+        app:layout_constraintVertical_bias="0.231" />
 
     <EditText
         android:id="@+id/etPassword"
@@ -69,6 +68,21 @@
         app:layout_constraintHorizontal_bias="0.576"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etUsername" />
+
+    <TextView
+        android:id="@+id/tvNotAccountYet"
+        android:layout_width="234dp"
+        android:layout_height="35dp"
+        android:text="Not account yet? Create one"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/etPassword"
+        app:layout_constraintHorizontal_bias="0.235"
+        app:layout_constraintStart_toStartOf="@+id/etPassword"
+        app:layout_constraintTop_toBottomOf="@+id/etPassword"
+        app:layout_constraintVertical_bias="0.889" />
 
     <ImageButton
         android:id="@+id/btnGuide"

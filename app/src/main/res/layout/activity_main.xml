@@ -243,4 +243,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.96" />
 
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="110dp"
+        android:layout_height="46dp"
+        android:background="#00FFEB3B"
+        android:text="LogOut"
+        android:textAlignment="center"
+        android:textColor="#FF5722"
+        android:textSize="15sp"
+        android:textStyle="bold|italic"
+        android:typeface="serif"
+        app:backgroundTint="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="3dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
