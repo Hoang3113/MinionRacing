@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Minion Racing</string>
+    <string name="minion_rush">Minion Rush</string>
+    <string name="username">Username</string>
+    <string name="pwd">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="login">Login</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="register">Register</string>
+    <string name="instruction">Instruction</string>
 </resources>
