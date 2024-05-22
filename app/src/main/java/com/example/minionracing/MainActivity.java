@@ -44,10 +44,10 @@ public class MainActivity extends AppCompatActivity {
         etPayNumber3 = findViewById(R.id.etPayNumberPlayer3);
 
         tvCurrentAmount.setText(String.valueOf(INIT_AMOUNT));
-        sbPlayer1.setEnabled(false);
-        sbPlayer2.setEnabled(false);
-        sbPlayer3.setEnabled(false);
 
+        sbPlayer1.setProgress(0);
+        sbPlayer2.setProgress(0);
+        sbPlayer3.setProgress(0);
         MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.music);
 
         btnStart.setOnClickListener(v -> startRace(mediaPlayer, MainActivity.this));
@@ -93,12 +93,16 @@ public class MainActivity extends AppCompatActivity {
         Random random = new Random();
         int[] progress = new int[3];
         int[] playerScores = new int[3];
-
+        int[] betAmounts = new int[]{betAmount1, betAmount2, betAmount3};
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 for (int i = 0; i < 3; i++) {
                     if (playerScores[i] >= WIN_SCORE) {
+                        int currentAmount = Integer.parseInt(tvCurrentAmount.getText().toString());
+                        int winningAmount = calculateWinningAmount(betAmounts[i]);
+                        currentAmount += winningAmount - totalBetAmount;
+                        tvCurrentAmount.setText(String.valueOf(currentAmount));
                         resultNotify.setText("Player " + (i + 1) + " wins!");
                         enableButtons();
                         return;
@@ -109,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 handler.postDelayed(this, 600);
             }
-        }, 600);
+        }, 100);
     }
 
     private void resetPlayers() {
@@ -150,5 +154,8 @@ public class MainActivity extends AppCompatActivity {
                 return;
         }
         seekBar.setProgress(progress);
+    }
+    private int calculateWinningAmount(int betAmount) {
+        return betAmount * 3 - (betAmount/100 * 10);
     }
 }
