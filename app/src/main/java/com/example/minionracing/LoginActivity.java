@@ -22,7 +22,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private TextView tvNotAccountYet;
     private Button btnLogin;
     private final String REQUIRE = "Require";
-    private List<User> userList;
+    public static List<User> userList;
 
 
     @Override
@@ -39,10 +39,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void userData() {
-        userList = new ArrayList<>();
-        userList.add(new User("user1", "123"));
-        userList.add(new User("user2", "password2"));
-        userList.add(new User("user3", "password3"));
+        if (userList == null) {
+            userList = new ArrayList<>();
+            userList.add(new User("user1", "123"));
+            userList.add(new User("user2", "password2"));
+            userList.add(new User("user3", "password3"));
+        }
     }
 
     private boolean checkInput() {
@@ -86,7 +88,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void signUpForm() {
-        Intent intent = new Intent(this, LoginActivity.class);
+        Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
         finish();
     }

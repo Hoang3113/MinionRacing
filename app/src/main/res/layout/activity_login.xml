@@ -71,11 +71,11 @@
 
     <TextView
         android:id="@+id/tvNotAccountYet"
-        android:layout_width="234dp"
-        android:layout_height="35dp"
+        android:layout_width="253dp"
+        android:layout_height="49dp"
         android:text="Not account yet? Create one"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/etPassword"
