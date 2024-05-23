@@ -1,5 +1,6 @@
 package com.example.minionracing;
 
+import android.animation.Animator;
 import android.content.DialogInterface;
 import android.content.Intent;
 import androidx.activity.EdgeToEdge;
@@ -8,6 +9,7 @@ import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,7 +24,7 @@ import androidx.core.view.WindowInsetsCompat;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button btnLogout;
+    private Button btnLogout, btnToggleImage;
     private static final int INIT_AMOUNT = 10000;
     private static final int WIN_SCORE = 100;
     private TextView tvCurrentAmount, resultNotify;
@@ -31,6 +33,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText etPayNumber1, etPayNumber2, etPayNumber3;
     private int totalWin = 0, totalLose = 0;
     private Handler handler;
+    private boolean isImage1 = true; // Trạng thái của hình ảnh
+    private boolean isSoundOn = true;
+    private MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +50,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
         btnLogout = findViewById(R.id.btnLogout);
         btnLogout.setOnClickListener(this);
+
+        // Toggle Image button
+        btnToggleImage = findViewById(R.id.btnToggleImage);
+//        btnToggleImage.setOnClickListener(v -> toggleImage());
+        btnToggleImage.setOnClickListener(v -> muteSound());
         //bet race
         tvCurrentAmount = findViewById(R.id.tvCurrentAmount);
         resultNotify = findViewById(R.id.result);
@@ -62,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         sbPlayer1.setProgress(0);
         sbPlayer2.setProgress(0);
         sbPlayer3.setProgress(0);
-        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.music);
+        mediaPlayer = MediaPlayer.create(this, R.raw.music); // Khởi tạo mediaPlayer
 
         btnStart.setOnClickListener(v -> startRace(mediaPlayer, MainActivity.this));
         btnReset.setOnClickListener(v -> resetPlayers());
@@ -198,5 +208,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     private int calculateWinningAmount(int betAmount) {
         return betAmount * 3 - (betAmount/100 * 10);
+    }
+
+
+    private void muteSound() {
+        if (mediaPlayer != null) {
+            if (mediaPlayer.isPlaying()) {
+                mediaPlayer.pause();
+                btnToggleImage.setBackgroundResource(R.drawable.volume); // Đổi hình ảnh khi tắt âm thanh
+            } else {
+                mediaPlayer.start();
+                btnToggleImage.setBackgroundResource(R.drawable.sound); // Đổi hình ảnh khi bật âm thanh
+            }
+        }
     }
 }

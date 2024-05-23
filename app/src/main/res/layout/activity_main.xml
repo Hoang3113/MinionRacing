@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_4"
-    tools:context=".MainActivity">
-
+    tools:context=".MainActivity"
+    tools:ignore="ExtraText">
     <TextView
         android:id="@+id/result"
         android:layout_width="156dp"
@@ -224,4 +224,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/btnToggleImage"
+        android:layout_width="55dp"
+        android:layout_height="53dp"
+        android:background="@drawable/sound"
+        android:text="Toggle Image"
+        app:layout_constraintBottom_toTopOf="@+id/seekbarPlayer1"
+
+        app:layout_constraintEnd_toStartOf="@+id/result"
+        app:layout_constraintHorizontal_bias="0.108"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvCurrentAmountLabel"
+        app:layout_constraintVertical_bias="0.532" />
 </androidx.constraintlayout.widget.ConstraintLayout>
