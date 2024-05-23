@@ -69,23 +69,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <CheckBox
-        android:id="@+id/checkboxPlayer1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:buttonTint="#CCFFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/seekbarPlayer1"
-        app:layout_constraintEnd_toStartOf="@+id/seekbarPlayer1"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/seekbarPlayer1"
-        app:layout_constraintVertical_bias="0.619" />
-
     <SeekBar
         android:id="@+id/seekbarPlayer1"
-        android:layout_width="241dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_width="287dp"
+        android:layout_height="89dp"
+        android:layout_marginBottom="4dp"
         android:background="#E4FFFFFF"
         android:max="100"
         android:progress="10"
@@ -93,7 +81,7 @@
         android:splitTrack="false"
         android:thumb="@drawable/bob_run"
         app:layout_constraintBottom_toTopOf="@+id/seekbarPlayer2"
-        app:layout_constraintStart_toEndOf="@+id/checkboxPlayer1" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/etPayNumberPlayer1"
@@ -112,22 +100,10 @@
         app:layout_constraintVertical_bias="0.653" />
 
 
-    <CheckBox
-        android:id="@+id/checkboxPlayer2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:buttonTint="#CCFFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/seekbarPlayer2"
-        app:layout_constraintEnd_toStartOf="@+id/seekbarPlayer2"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/seekbarPlayer2"
-        app:layout_constraintVertical_bias="0.69" />
-
     <SeekBar
         android:id="@+id/seekbarPlayer2"
-        android:layout_width="241dp"
-        android:layout_height="wrap_content"
+        android:layout_width="287dp"
+        android:layout_height="89dp"
         android:background="#E4FFFFFF"
         android:max="100"
         android:progress="10"
@@ -135,7 +111,7 @@
         android:splitTrack="false"
         android:thumb="@drawable/kevin_run"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/checkboxPlayer2"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.689" />
 
@@ -158,8 +134,8 @@
 
     <SeekBar
         android:id="@+id/seekbarPlayer3"
-        android:layout_width="241dp"
-        android:layout_height="wrap_content"
+        android:layout_width="287dp"
+        android:layout_height="89dp"
         android:layout_marginTop="4dp"
         android:background="#E4FFFFFF"
         android:max="100"
@@ -167,20 +143,8 @@
         android:progressDrawable="@android:color/transparent"
         android:splitTrack="false"
         android:thumb="@drawable/stuart_run"
-        app:layout_constraintStart_toEndOf="@+id/checkboxPlayer3"
-        app:layout_constraintTop_toBottomOf="@+id/seekbarPlayer2" />
-
-    <CheckBox
-        android:id="@+id/checkboxPlayer3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:buttonTint="#CCFFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/seekbarPlayer3"
-        app:layout_constraintEnd_toStartOf="@+id/seekbarPlayer3"
-        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/seekbarPlayer3"
-        app:layout_constraintVertical_bias="0.404" />
+        app:layout_constraintTop_toBottomOf="@+id/seekbarPlayer2" />
 
     <EditText
         android:id="@+id/etPayNumberPlayer3"

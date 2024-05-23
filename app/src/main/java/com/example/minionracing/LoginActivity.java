@@ -8,11 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.minionracing.Dtos.User;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +21,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Button btnLogin;
     private final String REQUIRE = "Require";
     public static List<User> userList;
-
+    ImageButton btnGuide;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +34,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btnLogin.setOnClickListener(this);
         tvNotAccountYet.setOnClickListener(this);
         userData();
+      
+        btnGuide = findViewById(R.id.btnGuide);
+        btnGuide.setOnClickListener(v ->{
+            Intent intent = new Intent(this, GuideActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void userData() {
