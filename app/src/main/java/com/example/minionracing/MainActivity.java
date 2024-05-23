@@ -4,19 +4,20 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
-import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import java.util.Random;
 
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
         //logout
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -93,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (v.getId() == R.id.btnLogout) {
             showLogoutConfirmationDialog();
         }
+    }
 
     private void startRace(MediaPlayer mediaPlayer, Context context) {
         if (etPayNumber1.getText().toString().isEmpty() && etPayNumber2.getText().toString().isEmpty() && etPayNumber3.getText().toString().isEmpty()) {
