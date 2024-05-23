@@ -1,5 +1,9 @@
 package com.example.minionracing;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.media.MediaPlayer;
@@ -12,12 +16,12 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private Button btnLogout;
     private static final int INIT_AMOUNT = 10000;
     private static final int WIN_SCORE = 100;
     private TextView tvCurrentAmount, resultNotify;
@@ -31,7 +35,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        //logout
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+        btnLogout = findViewById(R.id.btnLogout);
+        btnLogout.setOnClickListener(this);
+        //bet race
         tvCurrentAmount = findViewById(R.id.tvCurrentAmount);
         resultNotify = findViewById(R.id.result);
         sbPlayer1 = findViewById(R.id.seekbarPlayer1);
@@ -55,6 +67,32 @@ public class MainActivity extends AppCompatActivity {
 
         handler = new Handler();
     }
+  
+    private void showLogoutConfirmationDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle("Logout")
+                .setMessage("Are you sure you want to logout?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        logout();
+                    }
+                })
+                .setNegativeButton("No", null)
+                .show();
+    }
+
+    private void logout() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.btnLogout) {
+            showLogoutConfirmationDialog();
+        }
 
     private void startRace(MediaPlayer mediaPlayer, Context context) {
         if (etPayNumber1.getText().toString().isEmpty() && etPayNumber2.getText().toString().isEmpty() && etPayNumber3.getText().toString().isEmpty()) {

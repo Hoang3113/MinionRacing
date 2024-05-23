@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_2">
+    android:background="@drawable/background_3">
 
     <TextView
         android:id="@+id/title"
@@ -12,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:fontFamily="cursive"
-        android:text="Minion Rush"
+        android:text="@string/minion_rush"
         android:textColor="#FFEB3B"
         android:textSize="60sp"
         android:textStyle="bold"
@@ -26,9 +25,10 @@
         style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:autofillHints=""
         android:background="#E4FFFFFF"
         android:ems="10"
-        android:hint="Username"
+        android:hint="@string/username"
         android:inputType="text"
         android:textColorHint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -38,30 +38,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.377" />
 
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="133dp"
-        android:layout_height="57dp"
-        android:backgroundTint="#E4FFFFFF"
-        android:fontFamily="casual"
-        android:text="Login"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword"
-        app:layout_constraintVertical_bias="0.231" />
-
     <EditText
         android:id="@+id/etPassword"
         style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:autofillHints=""
         android:background="#E4FFFFFF"
         android:ems="10"
-        android:hint="Password"
+        android:hint="@string/pwd"
         android:inputType="textPassword"
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,20 +55,53 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etUsername" />
 
+    <EditText
+        android:id="@+id/etConfirmPassword"
+        style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:autofillHints=""
+        android:background="#E4FFFFFF"
+        android:ems="10"
+        android:hint="@string/confirm_password"
+        android:inputType="textPassword"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.576"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+
     <TextView
         android:id="@+id/tvNotAccountYet"
-        android:layout_width="253dp"
-        android:layout_height="49dp"
-        android:text="Not account yet? Create one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/already_have_an_account"
         android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/etPassword"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.235"
-        app:layout_constraintStart_toStartOf="@+id/etPassword"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etConfirmPassword"
         app:layout_constraintVertical_bias="0.889" />
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="133dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#E4FFFFFF"
+        android:fontFamily="casual"
+        android:text="@string/register"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etConfirmPassword"
+        app:layout_constraintVertical_bias="0.1" />
 
     <ImageButton
         android:id="@+id/btnGuide"
@@ -90,7 +109,7 @@
         android:layout_height="66dp"
         android:background="@null"
         android:scaleType="fitCenter"
-        android:contentDescription="Instruction"
+        android:contentDescription="@string/instruction"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.953"
@@ -98,6 +117,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.95"
         app:srcCompat="@drawable/light_bulb" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
