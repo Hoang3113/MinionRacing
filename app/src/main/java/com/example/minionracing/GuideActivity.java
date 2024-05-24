@@ -50,9 +50,9 @@ public class GuideActivity extends AppCompatActivity {
         txtRule4 = findViewById(R.id.txtRule4);
         txtRule5 = findViewById(R.id.txtRule5);
         rules.add("Bước 1: Bạn cần phải đăng nhập để có thể tham gia trò chơi.");
-        rules.add("Bước 2: Hãy chọn minion mà bạn tin rằng nó mang về chiến thắng cho bạn bằng cách chọn check box phía trước nó.");
+        rules.add("Bước 2: Hãy chọn minion mà bạn tin rằng nó mang về chiến thắng cho bạn.");
         rules.add("Bước 3: Nhập số tiền mà bạn muốn cược để cho minion. Hãy đảm bảo rằng bạn có đủ tiền để cược!");
-        rules.add("Bước 4: Hãy đặt lòng tin, cổ vũ và chờ đợi chú minion của bạn chiến thắng!");
-        rules.add("Bước 5: Cậu ta đã mang chiến thắng đến cho bạn. Thật tuyệt vời! Hãy reset và bắt đầu 1 ván cược mới nào!");
+        rules.add("Bước 4: Cậu ta đã mang chiến thắng đến cho bạn. Thật tuyệt vời! Reset và bắt đầu 1 ván cược mới nào!");
+        rules.add("Chú ý: Số tiền thắng cược của bạn sẽ bằng 2,9 lần số tiền bạn đặt cược. Và bạn sẽ mất hết tiền đã đặt nếu thua cuộc!");
     }
 }
