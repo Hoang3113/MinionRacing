@@ -22,6 +22,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private TextView tvAlreadyHaveAccount;
     private final String REQUIRE = "Require";
     private List<User> userList;
+    private static final int INIT_AMOUNT = 10000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +77,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             }
         }
 
-        User newUser = new User(username, password);
+        User newUser = new User(username, password, INIT_AMOUNT);
         userList.add(newUser);
 
         Toast.makeText(this, "Registration successful", Toast.LENGTH_SHORT).show();

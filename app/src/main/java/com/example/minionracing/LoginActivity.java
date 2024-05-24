@@ -2,6 +2,7 @@ package com.example.minionracing;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -45,9 +46,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void userData() {
         if (userList == null) {
             userList = new ArrayList<>();
-            userList.add(new User("user1", "123"));
-            userList.add(new User("user2", "password2"));
-            userList.add(new User("user3", "password3"));
+            userList.add(new User("user1", "password1", 10000));
+            userList.add(new User("user2", "password2", 10000));
+            userList.add(new User("user3", "password3", 10000));
         }
     }
 
@@ -65,13 +66,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         return true;
     }
 
-    private boolean validateLogin(String username, String password) {
+    private User validateLogin(String username, String password) {
         for (User user : userList) {
             if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
-                return true;
+                return user;
             }
         }
-        return false;
+        return null;
     }
 
     private void signIn() {
@@ -81,9 +82,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
         String username = etUsername.getText().toString();
         String password = etPassword.getText().toString();
-
-        if (validateLogin(username, password)) {
+        User user = validateLogin(username, password);
+        if (user != null) {
             Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra("user", user);
             startActivity(intent);
             finish();
         } else {

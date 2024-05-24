@@ -1,6 +1,5 @@
 package com.example.minionracing;
 
-import android.animation.Animator;
 import android.content.DialogInterface;
 import android.content.Intent;
 import androidx.activity.EdgeToEdge;
@@ -9,7 +8,6 @@ import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +19,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.minionracing.Dtos.User;
+
+import java.util.List;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -34,8 +35,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private int totalWin = 0, totalLose = 0;
     private Handler handler;
     private boolean isImage1 = true; // Trạng thái của hình ảnh
-    private boolean isSoundOn = true;
     private MediaPlayer mediaPlayer;
+    private User user;
+    private List<User> userList;
+    private boolean isSoundOn = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +71,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         etPayNumber2 = findViewById(R.id.etPayNumberPlayer2);
         etPayNumber3 = findViewById(R.id.etPayNumberPlayer3);
 
-        tvCurrentAmount.setText(String.valueOf(INIT_AMOUNT));
+        //get user from login
+        user = getIntent().getParcelableExtra("user");
+        userList = LoginActivity.userList;
+
+//        tvCurrentAmount.setText(String.valueOf(INIT_AMOUNT));
+        tvCurrentAmount.setText(String.valueOf(user.getMoney()));
 
         sbPlayer1.setProgress(0);
         sbPlayer2.setProgress(0);
@@ -94,6 +103,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void logout() {
+        System.out.printf(user + "");
+        for (User userL:
+             userList) {
+            if(userL.getUsername().equals(user.getUsername())){
+                userL.setMoney(user.getMoney());
+                break;
+            }
+        }
+        mediaPlayer.pause();
         Intent intent = new Intent(this, LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
@@ -138,7 +156,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         resultNotify.setVisibility(View.VISIBLE);
-        mediaPlayer.start();
+        if(!mediaPlayer.isPlaying() && !isSoundOn){
+            mediaPlayer.start();
+        }
         disableButtons();
 
         Random random = new Random();
@@ -153,6 +173,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         int currentAmount = Integer.parseInt(tvCurrentAmount.getText().toString());
                         int winningAmount = calculateWinningAmount(betAmounts[i]);
                         currentAmount += winningAmount - totalBetAmount;
+                        user.setMoney(currentAmount);
                         tvCurrentAmount.setText(String.valueOf(currentAmount));
                         resultNotify.setText("Player " + (i + 1) + " wins!");
                         enableButtons();
@@ -214,9 +235,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void muteSound() {
         if (mediaPlayer != null) {
             if (mediaPlayer.isPlaying()) {
+                isSoundOn = true;
                 mediaPlayer.pause();
                 btnToggleImage.setBackgroundResource(R.drawable.volume); // Đổi hình ảnh khi tắt âm thanh
             } else {
+                isSoundOn = false;
                 mediaPlayer.start();
                 btnToggleImage.setBackgroundResource(R.drawable.sound); // Đổi hình ảnh khi bật âm thanh
             }
